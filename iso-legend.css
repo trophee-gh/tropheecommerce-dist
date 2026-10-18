@@ -1,0 +1,21 @@
+/* iso-legend: HTML labels over a drawing (see iso-legend.js). The colour code: go = Virgil's yes, sys = the system answering, ink = work. */
+.lg-fig{position:relative;margin:0}
+.lg-fig svg{display:block;width:100%;height:auto}
+.lg{--c:var(--lg-ink,#141414);position:absolute;z-index:1;white-space:nowrap;font:600 12px/1 var(--font-mono,"JetBrains Mono",ui-monospace,monospace);letter-spacing:.06em;text-transform:uppercase;color:var(--c);padding:4px 6px;border:1px solid var(--c);border-radius:4px;background:var(--lg-bg,#F3F2EE);transition:opacity .35s,color .35s,border-color .35s;pointer-events:none}
+.lg::before{content:"";position:absolute;width:10px;height:1px;background:var(--c)}
+.lg[data-tone=go]{--c:var(--lg-go,#B83A0C)}
+.lg[data-tone=sys]{--c:var(--lg-sys,#2348D6)}
+.lg.lit{--c:var(--lg-go,#B83A0C)}
+.lg.off{opacity:0}
+/* placement: the label's corner nearest the anchor sits 12 px from it, with the leader between */
+.lg,.lg[data-side=e]{transform:translate(12px,-50%)}.lg::before,.lg[data-side=e]::before{right:100%;top:50%}
+.lg[data-side=w]{transform:translate(calc(-100% - 12px),-50%)}.lg[data-side=w]::before{left:100%;right:auto;top:50%}
+.lg[data-side=n]{transform:translate(-50%,calc(-100% - 12px))}.lg[data-side=n]::before{top:100%;left:50%;width:1px;height:10px}
+.lg[data-side=s]{transform:translate(-50%,12px)}.lg[data-side=s]::before{bottom:100%;top:auto;left:50%;width:1px;height:10px}
+.lg[data-side=ne]{transform:translate(8px,calc(-100% - 8px))}.lg[data-side=ne]::before{top:100%;left:0;width:1px;height:8px}
+.lg[data-side=nw]{transform:translate(calc(-100% - 8px),calc(-100% - 8px))}.lg[data-side=nw]::before{top:100%;right:0;left:auto;width:1px;height:8px}
+.lg[data-side=se]{transform:translate(8px,8px)}.lg[data-side=se]::before{bottom:100%;top:auto;left:0;width:1px;height:8px}
+.lg[data-side=sw]{transform:translate(calc(-100% - 8px),8px)}.lg[data-side=sw]::before{bottom:100%;top:auto;right:0;left:auto;width:1px;height:8px}
+/* on a dark ground (screen, panel) */
+[data-scheme=screen] .lg,[data-scheme=panel] .lg,.lg-dark .lg{--lg-ink:#E9E5D8;--lg-bg:#0D100F;--lg-go:#FF8A5C;--lg-sys:#93A8FF}
+@media (prefers-reduced-motion:reduce){.lg{transition:none}}

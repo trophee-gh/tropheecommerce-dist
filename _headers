@@ -1,0 +1,18 @@
+# Netlify response headers for tropheecommerce.com (hardy-tiger-8vph, 10-18). build.mjs copies this file to the root
+# of dist/; scripts/check-launch.mjs (H14) checks it and the pages against it.
+# The CSP fits the site as built: every script is a file of the site (no inline script, no eval); styles are the site's
+# files plus inline style attributes, which the drawings use by the hundred (style-src 'unsafe-inline'); fonts and
+# images come from the site only; nothing is fetched; no page may be framed.
+/*
+  Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self'; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests
+  X-Frame-Options: DENY
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(), usb=()
+
+# img/ and fonts/ carry their content's hash in their names (build.mjs): a year, immutable. Pages, CSS and JS keep
+# Netlify's default (max-age=0, must-revalidate, with an ETag).
+/img/*
+  Cache-Control: public, max-age=31536000, immutable
+/fonts/*
+  Cache-Control: public, max-age=31536000, immutable

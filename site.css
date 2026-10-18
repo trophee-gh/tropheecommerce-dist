@@ -1,0 +1,242 @@
+/* the site's main page: header and hero from the identity's src/sales.css (lines 1-23), then the page's own */
+/* the vertical scale (polish 10-16), one set for every section: --sec a section's padding above and below (the same
+   on a light or a dark ground, so each change of ground sits at the same distance from the content on both sides);
+   --hd label → heading → lede; --hb the heading block → the section's content. Phones, then from 768 (the gutters' step). */
+:root{--sec:64px;--hd:12px;--hb:24px}
+@media (min-width:768px){:root{--sec:96px;--hb:32px}}
+html{scroll-padding-top:80px}
+.site{font:var(--ts-body-weight) var(--ts-body-size)/var(--ts-body-line-height) var(--ts-body-family);overflow-x:clip}
+@media (min-width:768px){.wrap{padding-left:40px;padding-right:40px}}
+/* header: the device's top edge */
+@media (min-width:600px){.hk .hk-x{display:inline}}
+@media (min-width:1000px){.brand-wm{display:inline-flex}.nk .nk-w{position:static;width:auto;height:auto;clip-path:none;font:600 14px/1 var(--font-text)}.navk{gap:6px;margin-right:12px}}
+@media (max-width:999px){.nk{display:grid;grid-template-columns:auto auto;justify-content:center;align-content:center;gap:3px 5px;padding:0 7px var(--key-depth)}.nk .nk-w{position:static;width:auto;height:auto;clip-path:none;grid-column:1/-1;justify-self:center;font:600 12px/1 var(--font-text)}}
+/* hero: the faceplate */
+.hero{padding:12px 0 32px}
+.grille{display:none}
+@media (min-width:600px){.face-k2{display:inline}}
+.hero-g{display:grid;gap:22px;padding:0 4px}
+.hero h1{font:var(--ts-display-weight) clamp(38px,5vw,72px)/1 var(--font-text);font-stretch:125%;letter-spacing:-0.035em}
+.hero-l{margin-top:16px;font-size:18px}
+.hero-a{margin-top:24px;display:flex;flex-wrap:wrap;align-items:center;gap:12px 20px}
+.hero-m{margin:0}
+@media (min-width:900px){
+.hero{padding:24px 0 48px}
+/* the grille's two rows centred on the label row's capitals, its last dot ending where the rule under it ends */
+.grille{display:block;position:absolute;right:25px;top:19px;width:150px;height:14px;background:radial-gradient(circle,var(--text-2) 0 1.6px,transparent 2px) 0 0/10px 7px}
+.hero-g{grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);align-items:center;gap:56px;padding:0}
+.hero-l{font-size:20px;max-width:30em}
+}
+@media (min-width:900px){.dev{max-width:440px;justify-self:end;width:100%}}
+.work{padding:var(--sec) 0}
+.work-h{display:grid;gap:var(--hd);margin-bottom:var(--hb)}
+@media (min-width:768px){.carts{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.close{padding:var(--sec) 0}
+.close-g{display:grid;gap:16px;justify-items:start;padding-top:40px;padding-bottom:40px}
+/* the close's actions as the hero's: 24 under the lede; the note on the key's label line ("Send a brief") */
+.close-a{margin-top:8px;align-items:center;align-items:last baseline}
+.close-a .small{text-wrap:balance}
+.close-g.screws::before,.close-g.screws::after{top:14px}
+.close-g.screws::before{left:16px}.close-g.screws::after{right:16px}
+.close h2{font-size:clamp(34px,5vw,64px);letter-spacing:-0.03em}
+.close .gokey{min-width:240px}
+/* proof strip: under the hero's plate at the hero's own bottom padding (32 / 48), the method --sec under its rule; every
+   item on one baseline (the logos' label with the figures) */
+.proof{padding:0}
+.pr{list-style:none;margin:0;padding:14px 0;display:flex;flex-wrap:wrap;align-items:baseline;gap:10px 28px;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.pr li{display:flex;align-items:baseline;gap:8px;font-size:15px;color:var(--text-2)}
+.pr b{font-size:20px;font-weight:700;color:var(--text)}
+.pr-logos{flex-wrap:wrap;align-items:baseline!important;gap:8px 10px!important}
+.pr-k{margin-right:4px}
+.logo{display:inline-flex;align-items:center;min-height:32px;padding:0 12px;border:1px dashed var(--text-3);border-radius:6px;font:700 15px/1 var(--font-text);font-stretch:112%;letter-spacing:.02em;color:var(--text-2)}
+@media (min-width:1000px){.pr-logos{margin-left:auto}}
+/* the diagram */
+.how{padding:var(--sec) 0}
+.how-h{display:grid;gap:var(--hd);margin-bottom:var(--hb)}
+.iso-w{border-radius:var(--radius-l);box-shadow:0 0 0 1px var(--border),0 2px 0 var(--border);padding:16px 12px 16px}
+.iso{display:block;width:100%;height:auto;overflow:visible}
+.iso polygon,.iso polyline{stroke:var(--text);stroke-width:1.5;stroke-linejoin:round;stroke-linecap:round;vector-effect:non-scaling-stroke;transition:fill var(--duration-quick),stroke var(--duration-quick)}
+.iso polyline{fill:none}
+.iso .f-top{fill:var(--surface-raised)}.iso .f-l{fill:var(--surface)}.iso .f-r{fill:color-mix(in oklab,var(--text) 9%,var(--surface))}
+.iso .inner{fill:color-mix(in oklab,var(--text) 6%,var(--surface))}
+.iso .dash{stroke-dasharray:5 4}
+.iso .grid{stroke:var(--border);stroke-width:1}
+.iso .route{stroke:var(--text-3);stroke-width:1.5;stroke-dasharray:2 5}
+.iso .gate{stroke-width:2.5}
+.iso .led-d{fill:var(--border);stroke:var(--text);stroke-width:1.5}
+.iso .tg{font:500 11px/1 var(--font-mono);letter-spacing:.08em;fill:var(--text-2)}
+.part{cursor:pointer;outline:none}
+.part.on polygon.f-top,.part.on polygon.f-l{fill:color-mix(in oklab,var(--signal) 22%,var(--surface-raised))}
+.part.on polygon.f-r{fill:color-mix(in oklab,var(--signal) 40%,var(--surface))}
+.part.on polygon,.part.on polyline{stroke:var(--go-text)}
+.part.on .gate{stroke:var(--signal)}
+.part.on .led-d{fill:var(--signal)}
+.part.on .tg{fill:var(--go-text);font-weight:700}
+.cap{margin:12px 4px 0!important;min-height:3em;font-size:14px;line-height:1.5;color:var(--text-2)}
+.cap-k{color:var(--go-text);font-weight:700}
+.pks{list-style:none;margin:10px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:6px}
+.pk{display:inline-flex;align-items:center;gap:6px;min-height:44px;padding:0 12px;border:0;border-radius:var(--radius-s);background:var(--surface);box-shadow:0 0 0 1px var(--border);font:500 12px/1 var(--font-mono);letter-spacing:.08em;color:var(--text);cursor:pointer}
+.pk-n{color:var(--text-2)}
+.pk-c{display:none}
+.pk[aria-pressed="true"]{box-shadow:0 0 0 2px var(--signal);color:var(--go-text)}
+.pk:focus-visible{outline:var(--focus-ring-width) solid var(--focus-ring);outline-offset:2px}
+@media (min-width:900px){.iso-w{padding:28px 32px 24px}.cap{font-size:15px;margin-left:0!important}}
+/* reduced motion: no cycling, every caption shown as a list */
+@media (prefers-reduced-motion:reduce){
+.cap{display:none}
+.pks{display:grid;gap:4px}
+.pk{width:100%;text-align:left;justify-content:flex-start;letter-spacing:normal;line-height:1.4;padding:10px 12px}
+.pk-c{display:inline;font-family:var(--font-text);font-size:14px;color:var(--text-2);letter-spacing:0;text-transform:none}
+}
+.cart p{font-size:15px;color:var(--text-2)}
+.cart .soon{margin-top:auto;min-height:44px;display:flex;align-items:center}
+.cart-img .slot{white-space:normal;text-align:center;padding:0 16px;font-size:13px}
+/* cases (variant A, Virgil 10-16): shared rows (subgrid) and one media height on every card; the tag an etched
+   nameplate with no LED (orange is the V key's only); "Read the case" a small key */
+.carts{row-gap:14px}
+.cart{display:grid;grid-row:span 5;grid-template-rows:subgrid;row-gap:10px;align-content:start}
+.cart>*{min-width:0}
+.cart h3,.cart p{margin:0!important}
+.cart-img,.cart-img.cart-co{aspect-ratio:16/10;padding:0;min-height:0}
+.cart-img .co{padding:var(--sp-3) var(--sp-4)}
+.cart>a{align-self:end;justify-self:start}
+@media (min-width:768px){.carts{column-gap:14px}}
+@media (min-width:768px) and (max-width:1023px){.cart-img,.cart-img.cart-co{aspect-ratio:4/3}.cart-img .co{width:calc(100% - 16px);box-sizing:border-box;padding:6px 10px;font-size:13px}.cart-img .co .r{padding:3px 0}}
+.cart-l .lbl{color:var(--text-3)}
+.ca-key{justify-self:start;align-self:end}
+/* guarantee */
+.gar{padding:var(--sec) 0}
+.gar-g{display:grid;gap:16px;justify-items:start}
+.gar h2{max-width:22em}
+.foot .link{min-height:44px}
+@media (max-width:599px){.iso .tg{display:none}.iso-w{padding:12px 4px}}
+.dev-scr{background:linear-gradient(#D8D5CE,#C4C1BA)}
+@media (min-width:1000px){.brand-wm{--wm-size:30px}}
+.gar .lede{color:var(--text-2)}
+/* hero: the badge in 3D (Virgil's pick, round B o3; the clip dropped), tilting with the pointer */
+.p3w{perspective:1000px;justify-self:end;align-self:center;width:100%;max-width:340px}
+.p3c{--rx:4deg;--ry:-12deg;position:relative;padding:14px 14px 16px;border-radius:16px;background:var(--pal-panel);color:var(--pal-light);box-shadow:1px 1px 0 #000,2px 2px 0 #000,3px 3px 0 #000,4px 4px 0 #000,26px 34px 50px rgb(20 20 20/.35);transform:rotateY(var(--ry)) rotateX(var(--rx)) rotateZ(2deg);transition:transform .4s var(--ease-out)}
+.p3c.live{transition:transform .08s linear}
+.p3c .lbl{color:var(--pal-light-2)}
+.p3c-top{display:flex;justify-content:space-between;align-items:center;margin:4px 2px 12px}
+.p3c img{display:block;width:100%;height:auto;aspect-ratio:4/4.2;object-fit:cover;object-position:50% 18%;border-radius:10px;background:linear-gradient(#D8D5CE,#C4C1BA)}
+.p3c-b{display:grid;gap:6px;margin:14px 2px 0}
+.p3c-b b{font:800 24px/1.05 var(--font-text);font-stretch:125%}
+@media (max-width:899px){
+.hero-g{display:flex;flex-direction:column}
+.p3w{order:-1;width:calc(100% - 12px);max-width:320px;align-self:flex-start;margin:4px 0 4px}
+.p3c{display:grid;grid-template-columns:96px 1fr;gap:14px;align-items:center;padding:10px;--ry:-4deg;--rx:3deg}
+.p3c-top{display:none}
+.p3c img{aspect-ratio:1;border-radius:8px}
+.p3c-b{margin:0;gap:4px}.p3c-b b{font-size:18px}
+}
+@media (prefers-reduced-motion:reduce){.p3c{transition:none}}
+/* the guarantee links as plain keys (round B o1), the hero's actions aligned at the bottom */
+.gl1{flex-direction:row;align-items:center;gap:10px;min-height:48px;padding:0 16px var(--key-depth);font:600 15px/1 var(--font-text)}
+.gar .gl1{--key-bg:var(--pal-panel-2)}
+.hero-a{align-items:flex-end}
+/* case pages */
+.cs{padding:12px 0 24px}
+.cs-h{display:grid;gap:14px}
+.cs-h h1{font:var(--ts-display-weight) clamp(34px,4.6vw,64px)/1.02 var(--font-text);font-stretch:125%;letter-spacing:-0.03em}
+.cs-g{display:grid;gap:28px;margin-top:32px}
+.cs-t{display:grid;gap:12px;max-width:40em}
+.cs-t h2{font-size:clamp(22px,2.4vw,28px);margin-top:20px!important}
+.cs-t h2:first-child{margin-top:0!important}
+.cs-t p{color:var(--text-2)}
+.cs-a{display:grid;gap:12px;align-content:start}
+.cs-a .slot{white-space:normal;text-align:center;padding:0 16px;font-size:13px}
+@media (min-width:1000px){.cs-g{grid-template-columns:minmax(0,1fr) 400px;gap:72px;margin-top:56px}.cs-a{position:sticky;top:88px}.cs{padding-top:24px}}
+/* Virgil 10-15: the card grabbable (drag rotates further, release springs back); more centred; a larger first section; on a phone the card centred with a quiet shadow and more room under the actions */
+.p3c{cursor:grab;touch-action:pan-y;user-select:none}
+.p3c.grab{cursor:grabbing;transition:transform .05s linear}
+.p3c img{-webkit-user-drag:none;pointer-events:none}
+@media (min-width:900px){
+.hero-g{padding-block:28px 20px}
+.hero h1{font-size:clamp(44px,5.6vw,80px)}
+.p3w{justify-self:center;max-width:370px;margin-right:24px;margin-bottom:50px}
+}
+@media (max-width:899px){
+.p3w{align-self:center}
+.p3c{box-shadow:1px 1px 0 #000,2px 2px 0 #000,3px 3px 0 #000,6px 10px 16px rgb(20 20 20/.14)}
+.hero-a{margin-bottom:20px}
+}
+/* 01 · Method (Virgil's spec 10-15; challenger X1's execution since 10-15): the front panel on the dark screen, the
+   five-step timeline beside it (first on a phone). The parts' CSS is panel/kit.css (in illus.css), the timeline's
+   panel/player.css; here only what is the method's own: its heading and its two layouts' swap. */
+.mp-tall{display:none}
+/* the tall drawing centred in its well whenever the well is wider than the drawing (1000-1175 and 540-700 px): the
+   legends' .lg-fig{margin:0} (iso-legend.css, loaded after) used to win and leave it flush left */
+@container (max-width:640px){.mp-wide{display:none}.mt-w .mp-tall{display:block;width:100%;max-width:470px;margin-inline:auto}}
+/* Virgil 10-15: a key presses like a key. The base (its edge under the cap) stays on the floor; only the cap travels
+   down onto it. The edge is drawn below the cap (outer shadow), so cap + edge = the key's full height at rest,
+   and pressed the cap has moved down by the depth and covers the edge: the bottom never moves. */
+.key{padding-bottom:var(--sp-2);margin-bottom:var(--key-depth);box-shadow:0 var(--key-depth) 0 var(--key-edge-c),0 0 0 1px var(--key-edge-c),0 var(--key-depth) 0 1px var(--key-edge-c)}
+.key:hover,.key.is-hover{transform:translateY(1px);box-shadow:0 calc(var(--key-depth) - 1px) 0 var(--key-edge-c),0 0 0 1px var(--key-edge-c),0 calc(var(--key-depth) - 1px) 0 1px var(--key-edge-c)}
+.key:active,.key.is-active,.key[aria-pressed="true"]{transform:translateY(var(--key-depth));box-shadow:0 0 0 0 var(--key-edge-c),0 0 0 1px var(--key-edge-c)}
+.nk,.hk,.gl1{padding-bottom:0}
+/* the orange keys (Enter, and Brief me in the header) share one body: an ink outline and a dark orange edge */
+.gokey{padding-bottom:10px}
+.gokey,.hk{box-shadow:0 var(--key-depth) 0 color-mix(in oklab,var(--action) 60%,var(--text)),0 0 0 1px var(--text),0 var(--key-depth) 0 1px var(--text)}
+.gokey:hover,.hk:hover{box-shadow:0 calc(var(--key-depth) - 1px) 0 color-mix(in oklab,var(--action) 60%,var(--text)),0 0 0 1px var(--text),0 calc(var(--key-depth) - 1px) 0 1px var(--text)}
+.gokey:active,.hk:active{box-shadow:0 0 0 0 transparent,0 0 0 1px var(--text)}
+/* header on a phone (Virgil 10-16): the mark, a larger wordmark and Brief me; the nav keys hidden under 600 */
+@media (max-width:599px){.navk{display:none}.brand-wm{display:inline-flex;--wm-size:clamp(22px,7vw,30px)}.brand{gap:8px}.hk .hk-x{display:inline}.hk{min-height:44px}}
+/* footer (Virgil 10-16): the same layout on the dark panel; the links are keys with a glyph, no orange. As in the
+   header, each key (cap and edge) sits at the same distance from the top and the bottom: 20 and 20. */
+.foot{border-top:0;background:var(--surface);color:var(--text);padding:20px 0}
+.foot .small{color:var(--text-2);text-wrap:balance}
+.foot-k{display:flex;flex-wrap:wrap;gap:8px}
+.fk{flex-direction:row;align-items:center;gap:8px;padding:0 14px;font:600 14px/1 var(--font-text)}
+.fk-i{width:16px;height:16px;flex:none}
+.foot-g{row-gap:16px}
+/* a 320 phone: the three keys on one row */
+@media (max-width:359.98px){.fk{padding:0 10px;gap:7px}.foot-k{gap:6px}}
+/* polish 10-16: orange only on my V key, the Brief me / Enter keys and "sign". The badge's LED is lit in ink; on the
+   dark grounds the focus ring is light (the design system's is orange there). */
+.p3c .led.on{--led-c:var(--pal-phosphor)}
+[data-scheme=panel],[data-scheme=screen]{--focus:var(--pal-light)}
+/* the wordmark's capitals centred on the mark (they sat 1 px high) */
+.brand-wm{position:relative;top:1px}
+/* the proof strip on a phone: the logos' label on its own line, the three logos on the next (one never wraps alone) */
+@media (max-width:399.98px){.pr-k{flex-basis:100%}}
+/* placeholders wrap in balanced lines; a phrase marked .nw never breaks (a line never starts with its "·") */
+.cart-img .slot{text-wrap:balance}
+.nw{white-space:nowrap}
+/* the drawn cart's [CODE] is an inline slot like the others (its underline as wide as its text), not an image's
+   placeholder: no side padding, so its row holds on one line at 768 */
+.cart-img .co .slot{padding:0}
+/* the smallest phones (under 340): the hero's heading at 35 px, so it sets in three lines and "the" never stands alone */
+@media (max-width:339.98px){.hero h1{font-size:35px}}
+/* line breaks: running text never ends on a word alone; the section and card headings in balanced lines (the hero's
+   heading keeps its own break, "change." on its line) */
+.site p,.mt-ci,.wc-s{text-wrap:pretty}
+.site h2,.site h3{text-wrap:balance}
+/* phones (Virgil 10-16): the plate without its label row; the card first, centred, the space above it equal to its sides.
+   Its tilt and black edge lean the card's silhouette right and lift its top-left corner (more on a wider card), and the
+   tilted card is drawn at whole pixels: moved left 3 px and down 13 (2 and 12 under 340), its silhouette sits 23-23.75 px
+   from the plate's top, left and right edges at 320, 360 and 390 (measured at dpr 4) */
+@media (max-width:599.98px){#top .face-k{display:none}#top .p3w{position:relative;left:-3px;margin-top:13px}}
+@media (max-width:339.98px){#top .p3w{left:-2px;margin-top:12px}}
+/* Virgil 10-16 (his ruling, an exception to the orange rule; panel-playbook.md, colour code): a secondary key's LED lights
+   orange while the key is hovered (a real pointer only, so a tap does not leave it lit) or focused from the keyboard,
+   and goes back to rest after. The nav keys (.nk) keep theirs. */
+@media (hover:hover){.key.gl1:hover .led{--led-c:var(--pal-go)}}
+.key.gl1.is-hover .led,.key.gl1:focus-visible .led{--led-c:var(--pal-go)}
+/* the launch (hardy-tiger-8vph, 10-17): the client logos in one colour; the footer's legal link; the legal notice and the
+   404 on the case shell */
+.logo:has(svg){border:0;padding:0 6px;color:var(--text-2)}
+.logo svg{display:block;height:22px;width:auto}
+.logo[data-logo=japhy] svg{height:26px}
+.logo[data-logo=aubade] svg{height:28px}
+.foot-legal{flex-basis:100%;display:inline-flex;align-items:center;min-height:40px;font:500 12px/1 var(--font-mono);letter-spacing:.06em;text-transform:uppercase;color:var(--text-2);text-decoration:none}
+.foot-legal:hover,.foot-legal[aria-current]{color:var(--text);text-decoration:underline;text-underline-offset:3px}
+.lg{padding:24px 0 var(--sec)}
+.lg-h{display:grid;gap:16px;padding-top:28px;padding-bottom:36px}
+.lg-h h1{font-size:clamp(34px,5vw,64px);letter-spacing:-0.03em}
+.lg-l{display:grid;gap:0;margin:40px 0 0;max-width:720px}
+.lg-l>div{display:grid;gap:6px;padding:18px 0;border-top:1px solid var(--border)}
+.lg-l dd{margin:0;font-size:16px;line-height:1.6;color:var(--text)}
+@media (min-width:800px){.lg-l>div{grid-template-columns:240px 1fr;gap:24px}}
+.nf{padding-top:24px}
+.nf h1{font-size:clamp(34px,5vw,64px);letter-spacing:-0.03em}

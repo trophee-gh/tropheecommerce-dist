@@ -1,0 +1,39 @@
+/* 04 · Working together (variant C, Virgil 10-16): a timeline from brief to scope; the work starts only after it. No orange here. */
+/* ---------- the section, shared: the page's vertical scale (site.css: --sec, --hd, --hb) ---------- */
+.wt{background:var(--surface);color:var(--text);padding:var(--sec,64px) 0}
+.wt-h{display:grid;gap:var(--hd,12px);margin-bottom:var(--hb,24px)}
+.wt-h .lbl,.wt-h h2,.wt-h .lede{margin:0}
+/* ---------- C: the timeline ---------- */
+/* Each LED sits on its time's capitals (phones: centred on them, at 6 px; desktop: on its own row under it), its lens on
+   the section's left edge (the ring hangs out, as the method's LEDs). The line runs from one LED's centre to the next
+   behind them (the LED's dark ring keeps it clear of the lens), so the gaps around every LED match; its 1 px sits on
+   whole pixels (the LED centres fall on half pixels), so it stays crisp at 1x. */
+.wc-line{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr;position:relative}
+.wc-st{position:relative;display:grid;grid-template-columns:12px 1fr;column-gap:20px;row-gap:2px;padding:0 0 22px}
+.wc-st:last-child{padding-bottom:0}
+.wc-st::before{content:"";position:absolute;left:6px;top:6px;bottom:-6px;width:1px;background:var(--border)}
+.wc-st:last-child::before{display:none}
+.wc-t{grid-column:2;grid-row:1;font:500 12px/1.2 var(--font-mono);letter-spacing:.08em;color:var(--pal-blue-lift)}
+.wc-dot{grid-column:1;grid-row:1;align-self:start;justify-self:start;width:12px;height:12px;margin:0 0 0 .5px;border-radius:50%;background:var(--pal-phosphor);box-shadow:0 0 0 2px var(--surface),0 0 0 3px var(--border);z-index:1}
+.wc-k{grid-column:2;font:600 19px/1.25 var(--font-text)}
+.wc-s{grid-column:2;font-size:15px;line-height:1.45;color:var(--text-2)}
+.wc-st:last-child .wc-dot{background:var(--surface);box-shadow:0 0 0 2px var(--surface),0 0 0 3px var(--text)}
+@media (min-width:900px){
+  /* four columns on shared rows (subgrid): times, LEDs, steps and lines line up whatever wraps */
+  .wc-line{grid-template-columns:repeat(4,1fr);grid-template-rows:auto 20px auto auto;column-gap:24px;row-gap:6px}
+  .wc-st{grid-row:span 4;grid-template-columns:1fr;grid-template-rows:subgrid;row-gap:6px;padding:0}
+  /* the LED's centre: the time's row (16) + 6 + 4.5 + 6 = 32.5; the line from it to the next LED (a column + the gap) */
+  .wc-t{grid-column:1;grid-row:1;line-height:16px}
+  .wc-dot{grid-column:1;grid-row:2;align-self:start;margin:4.5px 0 0}
+  .wc-st::before{left:6px;right:-30px;top:32px;bottom:auto;width:auto;height:1px}
+  .wc-k,.wc-s{grid-column:1}
+}
+/* the LEDs light in turn once, when the timeline comes into view (site.js arms them: .wc-js, then .wc-go); off screen
+   the sequence holds (.wc-off). Without JS, and with reduced motion, they show lit, static. */
+@keyframes wcon{from{background:var(--surface)}to{background:var(--pal-phosphor)}}
+.wc-js .wc-st:not(:last-child) .wc-dot{background:var(--surface)}
+.wc-js.wc-go .wc-st:not(:last-child) .wc-dot{animation:wcon .3s calc(.2s + var(--i) * .45s) forwards}
+.wc-js.wc-go.wc-off .wc-st .wc-dot{animation-play-state:paused}
+@media (prefers-reduced-motion:reduce){.wc-js .wc-st:not(:last-child) .wc-dot{background:var(--pal-phosphor);animation:none}}
+.wc-foot{display:flex;flex-wrap:wrap;gap:8px 32px;margin:var(--hb,24px) 0 0;padding-top:16px;border-top:1px dashed var(--border);font-size:15px;color:var(--text)}
+.wc-m{font:500 12px/1 var(--font-mono);letter-spacing:.08em;color:var(--text-2);margin-right:8px}

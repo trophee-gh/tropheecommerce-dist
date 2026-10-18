@@ -1,0 +1,4 @@
+# Netlify publishes this repository as it is: the built site of trophee-gh/tropheecommerce-site, pushed by the desk's
+# scripts/publish-dist.mjs after the build, the launch check and the phone check pass. Nothing is built here.
+[build]
+  publish = "."

@@ -1,0 +1,54 @@
+/* panel player (pure-moose-h6b6, 10-15): the timeline beside a panel drawing, lifted from the homepage method section.
+   Markup (kit.mjs section()): .mt-g > .mt-w (the drawing's well: .mt-sr, the figures) + ol.mt
+   (one .mt-i button per step). Desktop (>= 1000 px): drawing left, timeline right (330 px), both full height. Phones:
+   the timeline first; the current item opens its caption to the longest caption's height. Tones per item: ink | sys |
+   bad | ok | go (the colour code). Behaviour: player.js. Playbook: rounds/online-identity/panel-playbook.md. */
+.mt-g{display:grid;gap:20px}
+@media (min-width:1000px){.mt-g{grid-template-columns:minmax(0,1fr) 330px;gap:40px;align-items:stretch}}
+.mt-g>.mt-w{position:relative;container-type:inline-size;display:flex;flex-direction:column;justify-content:center;padding:14px 12px;border-radius:var(--radius-l);background:var(--surface);box-shadow:inset 0 0 0 1px #2A302D}
+@media (min-width:1000px){.mt-g>.mt-w{padding:20px 18px}}
+.mt-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap;margin:0}
+
+/* the timeline: its five items are the progress */
+.mt{list-style:none;margin:0;padding:0;display:grid;gap:4px;align-content:center}
+.mt-i{position:relative;display:grid;grid-template-columns:20px 1fr;gap:4px 14px;width:100%;min-height:44px;padding:10px 12px 17px;border:0;border-radius:var(--radius-m);background:none;text-align:left;font:inherit;color:var(--text-2);cursor:pointer;transition:background .2s}
+.mt-i:hover{background:var(--surface-hover)}
+.mt-i:focus-visible{outline:var(--focus-ring-width) solid var(--focus-ring);outline-offset:2px}
+.mt-led{width:10px;height:10px;margin:3px 0 0 5px;border-radius:50%;background:var(--border);box-shadow:inset 0 0 0 1px color-mix(in oklab,var(--text) 30%,transparent);transition:background .3s,box-shadow .3s}
+.mt-x{display:grid;gap:3px}
+.mt-n{color:var(--text-2)}
+.mt-t{font:600 18px/1.25 var(--font-text);font-stretch:112%;color:var(--text-2)}
+.mt-c{display:block}
+.mt-ci{display:block;color:var(--text-2)}
+.mt-bar{position:absolute;left:46px;right:12px;bottom:7px;height:2px;border-radius:1px;background:var(--border)}
+.mt-bar i{position:absolute;inset:0;border-radius:1px;background:var(--tone);transform-origin:left;transform:scaleX(0)}
+.mt-bar b{position:absolute;top:-2px;width:1px;height:6px;background:var(--surface);box-shadow:0 0 0 .5px color-mix(in oklab,var(--text) 22%,transparent)}
+.mt-i:not([aria-current]) .mt-bar b{display:none}
+.mt-i[data-past] .mt-bar i{transform:none;background:color-mix(in oklab,var(--tone) 45%,var(--border))}
+.mt-i{--tone:var(--text)}.mt-i[data-tone=sys]{--tone:var(--ai)}.mt-i[data-tone=bad]{--tone:var(--pal-red)}.mt-i[data-tone=ok]{--tone:#1F8A4C}.mt-i[data-tone=go]{--tone:var(--pal-go)}
+.mt-i[aria-current] .mt-led{background:var(--tone);box-shadow:0 0 0 3px color-mix(in oklab,var(--tone) 22%,transparent)}
+.mt-i[data-past] .mt-led{background:color-mix(in oklab,var(--tone) 45%,var(--border))}
+.mt-i[aria-current] .mt-t{font-weight:800;color:var(--text)}
+.mt-i[aria-current] .mt-n,.mt-i[aria-current] .mt-ci{color:var(--text)}
+@keyframes mtfill{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+/* the items' 12 px of padding (their hover and focus) hang into the gutter, so the bars end on the section's right edge */
+@media (min-width:1000px){.mt-g>.mt{margin-right:-12px}}
+/* phones: the timeline first, compact; the current item opens its caption to the longest caption's height */
+@media (max-width:999px){
+/* the items' padding hangs into the gutter: the LEDs on the heading's left edge, the bars ending on the drawing's right edge */
+.mt-g>.mt{order:-1;gap:0;margin-inline:-12px}
+.mt-i{grid-template-columns:15px 1fr;padding:11px 12px 13px;align-items:start}
+.mt-x{grid-template-columns:auto 1fr;column-gap:12px;row-gap:0;align-items:baseline}
+.mt-led{margin:5px 0 0}
+.mt-bar{left:41px}
+.mt-t{font-size:17px}
+.mt-k{display:none}
+.mt-c{grid-column:1/-1;height:0;overflow:hidden;transition:height .4s cubic-bezier(.3,.7,.4,1)}
+.mt-i[aria-current] .mt-c{height:calc(var(--capH,4.5em) + 6px)}
+.mt-ci{padding-top:6px;font-size:14px}
+.mt-bar{bottom:5px}
+}
+/* reduced motion: no fill; the current item's bar shows full, the ones to come stay empty */
+@media (prefers-reduced-motion:reduce){.mt-bar i{animation:none!important}.mt-i[aria-current] .mt-bar i{transform:none}.mt-c{transition:none}}
+/* paused or off screen: the motion holds where it is */
+.mt-frozen .mp *{animation-play-state:paused!important}
