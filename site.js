@@ -55,3 +55,15 @@
   });
   hero.addEventListener('pointerleave', () => { if (!grab) rest(); });
 })();
+// The legal pages' email and phone (lavish-newt-fy08, S7): the address is not in the HTML (Virgil 10-17), only drawn
+// by CSS in two halves (.lg-ob ::before and ::after, build.mjs). With scripts on, each becomes a real link with real
+// text, read back from those halves: clickable, copyable, read by screen readers. Without scripts, the drawing stays.
+document.querySelectorAll('.lg-ob').forEach(s => {
+  const half = w => { const c = getComputedStyle(s, w).content; return /^["']/.test(c) ? c.slice(1, -1).replace(/\\(.)/g, '$1') : ''; };
+  const v = half('::before') + half('::after');
+  if (!v) return;
+  const a = document.createElement('a');
+  a.href = v.includes('@') ? 'mailto:' + v : 'tel:' + v.replace(/[^\d+]/g, '');
+  a.textContent = v;
+  s.replaceWith(a);
+});

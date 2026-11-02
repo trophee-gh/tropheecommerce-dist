@@ -1,0 +1,20 @@
+{
+  "name": "Virgil Dubois · Shopify developer",
+  "short_name": "Virgil Dubois",
+  "start_url": "/",
+  "display": "browser",
+  "background_color": "#F3F2EE",
+  "theme_color": "#141414",
+  "icons": [
+    {
+      "src": "/img/apple-touch-icon.e66518af97.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    },
+    {
+      "src": "/img/icon-512.98203a4568.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
